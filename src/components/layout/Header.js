@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import Sidebar from './Sidebar'
 import './header.css'
 export default class Header extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark mb-4">
+    <div>
+      <nav className="fixed-top navbar navbar-expand-sm navbar-dark mb-4">
+      
         <div className="container">
+            
             <a className="navbar-brand" href="Dashboard.html">
               VotingMadeEasy
             </a>
@@ -23,15 +28,15 @@ export default class Header extends Component {
 
                 <ul className="navbar-nav ms-auto">
                     <li className="nav-item">
-                        <a className="nav-link" href="login.html">
+                        <Link className="nav-link" to="/adminLogin">
                             Login
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
+   </div>
     )
   }
 }

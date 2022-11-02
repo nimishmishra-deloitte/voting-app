@@ -1,12 +1,14 @@
 import React, { Component} from 'react'
 import { Link } from 'react-router-dom'
 import './dashboard.css'
-import votingImage from '../../assets/vote.webp'
+import votingImage from '../../assets/vote.png'
+import Sidebar from '../layout/Sidebar'
 export default class Dashboard extends Component {
   render() {
     return (
       <React.Fragment>
       <div className='mainDiv'>
+        <div className='sidebar'><Sidebar/></div>
         <div className="leftDiv">
             <h2>
                Online Voting Platform
@@ -18,9 +20,7 @@ export default class Dashboard extends Component {
             decisions among citizens of the country. The app aims to provide 
             a single point of service and information delivery to 
             voters across the country. </p>
-            <Link to="/adminLogin">
-                <button className='login-btn'>Sign Up</button>
-            </Link>
+        
             <Link to="/adminLogin">
                 <button className='login-btn'>Admin Login</button>
             </Link>

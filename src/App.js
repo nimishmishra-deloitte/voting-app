@@ -7,12 +7,12 @@ import { BrowserRouter as Router,Route,Routes } from 'react-router-dom'
 import AddElection from './components/elections/AddElection'
 import Login from './components/userManagement/Login'
 import Election from './components/elections/Election'
+import Sidebar from './components/layout/Sidebar'
 export default class App extends Component {
   render() {
     return (
       <Router>
         <Header/>
-        
         <Routes>
         {/* Public routes */}
         <Route exact path="/" element={<Dashboard/>}/>
@@ -21,7 +21,7 @@ export default class App extends Component {
         <Route exact path="/dashboard" element={<Dashboard/>}/>
         <Route exact path="/addElection" element={<AddElection/>}/>
         <Route exact path="/showElections" element={<Election/>}/>
-        <Route exact path="/adminLogin" element={<Login/>}></Route>
+        <Route exact path="/adminLogin" element={<Login/>}/>
         </Routes>
       </Router>
     )

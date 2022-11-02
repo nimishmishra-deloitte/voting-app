@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import "./election.css"
 export default class Election extends Component {
   render() {
     return (
