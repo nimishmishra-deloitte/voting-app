@@ -1,65 +1,42 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect,Component } from 'react'
+import { Link } from 'react-router-dom'
+import { Form, Button, Row, Col } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import Loader from '../../components/layout/Loader'
+import Message from '../../components/layout/Message'
+import FormContainer from '../../components/layout/FormContainer'
+import { login } from '../../actions/userActions'
 import './login.css'
-export default class Login extends Component {
-    constructor() {
-        super();
-        this.state = {
-          username: "",
-          password: ""
-        };
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-      }
+export default function Login({ location, history }) {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const dispatch = useDispatch()
+
     
-      onSubmit(e) {
-        e.preventDefault();
-        const LoginRequest = {
-          username: this.state.username,
-          password: this.state.password
-        };
-    
-        this.props.login(LoginRequest);
-      }
-    
-      onChange(e) {
-        this.setState({ [e.target.name]: e.target.value });
-      }
-    
-  render() {
+
+    const userLogin = useSelector(state => state.userLogin)
+    const { error, loading, userInfo } = userLogin
+
+
+
+    const submitHandler = (e) => {
+        e.preventDefault()
+        dispatch(login(email, password))
+    }
     return (
-        <div class="login">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 m-auto">
-                    <h1 class="display-4 text-center">Log In</h1>
-                    <form onSubmit={this.onSubmit}>
-                        <div class="form-group">
-                            <input 
-                            type="text" 
-                            class="form-control form-control-lg" 
-                            placeholder="Email Address" 
-                            name="username"
-                            value={this.state.username} 
-                            onChange={this.onChange}
-                            />
-                        </div>
-                        <div class="form-group">
-                            <input 
-                            type="password" 
-                            class="form-control form-control-lg" 
-                            placeholder="Password" 
-                            name="password" 
-                            value={this.state.password} 
-                            onChange={this.onChange}
-                            />
-                        </div>
-                        <input type="submit" class="btn btn-info btn-block mt-4" />
-                    </form>
-                </div>
-            </div>
-        </div>
+        <div className="auth-form-container">
+        <h1>Sign In</h1>
+        {error && <Message variant='danger'>{error}</Message>}
+        {loading && <Loader />}
+        <form className="login-form" onSubmit={submitHandler}>
+                <label htmlFor="email">email</label>
+                <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
+                <label htmlFor="password">password</label>
+                <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" id="password" name="password" />
+                <button type="submit">Log In</button>
+            </form>
     </div>
     )
   }
-}
 
