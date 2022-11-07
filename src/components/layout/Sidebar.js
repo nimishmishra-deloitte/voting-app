@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import {
     FaTh,
@@ -21,7 +22,7 @@ const Sidebar = ({children}) => {
             icon:<FaTh/>
         },
         {
-            path:"/showElections",
+            path:"/addElection",
             name:"Add Elections",
             icon:<VscListSelection/>
         },

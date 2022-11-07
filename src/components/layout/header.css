@@ -1,4 +1,14 @@
+.main-div{
+    display: flex;
+    z-index: 1;
+}
 .navbar{
     background-color: #4663BE;
     opacity: 89%;
+    margin-left: auto;
+}
+.sidebar{
+    width:3%;
+    z-index: 2;
+    position: fixed;
 }

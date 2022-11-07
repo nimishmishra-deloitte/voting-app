@@ -2,15 +2,17 @@
     margin:0;
     padding:0;
     text-decoration: none;
+   
 }
 .sidebar{
+    margin-top: 53px;
     background: #000;
     color: #fff;
     height: 100vh;
     transition: all 0.5s;
-    margin-left:-12px;
-    margin-right: -12px;
-    z-index: 1;
+    z-index: 2;
+
+    margin-left: -12px;
 }
 .top_section{
     display: flex;

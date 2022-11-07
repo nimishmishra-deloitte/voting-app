@@ -1,18 +1,24 @@
 import React, { Component } from 'react'
 import Dashboard from './components/dashboard/Dashboard'
 import './App.css'
+import { useSelector } from 'react-redux'
 import Header from './components/layout/Header'
+import Sidebar from './components/layout/Sidebar'
 import 'bootstrap/dist/css/bootstrap.css'
-import { BrowserRouter as Router,Route,Routes } from 'react-router-dom'
+import { BrowserRouter as Router,Route,Routes, useLocation } from 'react-router-dom'
 import AddElection from './components/elections/AddElection'
 import Login from './components/userManagement/Login'
-import Election from './components/elections/Election'
-import Sidebar from './components/layout/Sidebar'
-export default class App extends Component {
-  render() {
+export default function App() {
+  const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
+    
     return (
       <Router>
+        {userInfo?(
+        <div className='header'>
         <Header/>
+        </div>
+        ):<Header/>}
         <Routes>
         {/* Public routes */}
         <Route exact path="/" element={<Dashboard/>}/>
@@ -20,11 +26,10 @@ export default class App extends Component {
         {/* Private routes */}
         <Route exact path="/dashboard" element={<Dashboard/>}/>
         <Route exact path="/addElection" element={<AddElection/>}/>
-        <Route exact path="/showElections" element={<Election/>}/>
         <Route exact path="/adminLogin" element={<Login/>}/>
         </Routes>
       </Router>
     )
   }
-}
+
 

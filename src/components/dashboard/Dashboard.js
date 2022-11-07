@@ -1,14 +1,23 @@
 import React, { Component} from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import './dashboard.css'
 import votingImage from '../../assets/vote.png'
 import Sidebar from '../layout/Sidebar'
-export default class Dashboard extends Component {
-  render() {
+export default function Dashboard(){
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
+
     return (
       <React.Fragment>
+       
       <div className='mainDiv'>
-        <div className='sidebar'><Sidebar/></div>
+      {userInfo ? 
+          (
+          <div class="side-panel"><Sidebar/></div>
+        )
+        :(
+        <div class="main-divs">
         <div className="leftDiv">
             <h2>
                Online Voting Platform
@@ -24,14 +33,15 @@ export default class Dashboard extends Component {
             <Link to="/adminLogin">
                 <button className='login-btn'>Admin Login</button>
             </Link>
-            
         </div>
         <div className="bgimage">
             <img src={votingImage}/>
         </div>
         </div>
+        )}
+        </div>
     </React.Fragment>
     
     )
-  }
+  
 }

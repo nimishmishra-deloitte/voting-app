@@ -1,9 +1,10 @@
 .mainDiv{
+    display:flex;
+}
+.main-divs{
     display: flex;
-    margin-top: 53px; 
     height:100vh;
     background-color:rgba(114, 142, 233, 0.4);
-    position: fixed;
 }
 .leftDiv{
     width:50%;
