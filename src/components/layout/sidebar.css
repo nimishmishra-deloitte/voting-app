@@ -11,7 +11,7 @@
     height: 100vh;
     transition: all 0.5s;
     z-index: 2;
-
+    display: block;
     margin-left: -12px;
 }
 .top_section{
@@ -45,4 +45,30 @@
 }
 .icon, .link_text{
     font-size: 20px;
+}
+
+.dropdown-nav .dropDownHeader{
+    display: flex !important;
+    justify-content: space-around !important;
+}
+.navDropdownLeft{
+    display:inline-block !important;
+    align-self: center;
+}
+.navDropdownRight{
+    display:inline-block !important;
+    
+}
+.navDropdownRight Link{
+    text-decoration: none !important;
+}
+.dropdown-nav .dropDownFooter{
+    width:250px;
+    display:flex;
+    justify-content: space-around;
+}
+.dropdown-nav .dropDownFooter select{
+    width:100px;
+    border:none;
+    color:grey;
 }

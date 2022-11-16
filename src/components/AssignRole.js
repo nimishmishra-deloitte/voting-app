@@ -7,7 +7,7 @@ import {
   TextField,
   Button,
   Box,
-} from "@material-ui/core";
+} from "@mui/material";
 import { InputLabel, FormControl, MenuItem } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { alignProperty } from "@mui/material/styles/cssUtils";

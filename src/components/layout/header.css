@@ -5,10 +5,17 @@
 .navbar{
     background-color: #4663BE;
     opacity: 89%;
-    margin-left: auto;
+    padding: 25px !important;
 }
 .sidebar{
     width:3%;
     z-index: 2;
     position: fixed;
+}
+.navbar-brand{
+    font-size: 30px;
+    font-weight: bold;
+}
+.nav-link{
+    font-weight: bold !important;
 }
