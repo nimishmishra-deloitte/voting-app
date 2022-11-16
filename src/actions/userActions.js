@@ -14,6 +14,7 @@ import {
   SESSION_INFO_SUCCESS,
   SESSION_INFO_RESET,
   SESSION_INFO_FAIL,
+  CHANGE_YEAR,
 } from "../constant/userConst";
 export const login = (username, password) => async (dispatch) => {
   try {
@@ -75,7 +76,7 @@ export const electionsInfo = (sessionid) => async (dispatch, getState) => {
       "http://127.0.0.1:8000/api/election/",
       config
     );
-    console.log(data, sessionid);
+
     dispatch({
       type: ELECTION_INFO_SUCCESS,
       payload: data,
@@ -90,7 +91,7 @@ export const electionsInfo = (sessionid) => async (dispatch, getState) => {
     });
   }
 };
-export const pollsInfo = () => async (dispatch, getState) => {
+export const pollsInfo = (sessionid) => async (dispatch, getState) => {
   try {
     dispatch({
       type: POLLS_INFO_REQUEST,
@@ -102,6 +103,9 @@ export const pollsInfo = () => async (dispatch, getState) => {
       headers: {
         "Content-Type": "Application/json",
         Authorization: `Bearer ${userInfo.access_token}`,
+      },
+      params: {
+        session_id: sessionid,
       },
     };
 
@@ -158,3 +162,11 @@ export const sessionInfo = () => async (dispatch, getState) => {
     });
   }
 };
+
+//
+// export const onChangeAction = (uid) => {
+//   return {
+//     type: CHANGE_YEAR,
+//     uid,
+//   };
+// };

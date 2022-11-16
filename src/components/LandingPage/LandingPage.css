@@ -1,0 +1,159 @@
+.header {
+  height: 5rem;
+  justify-content: center;
+  position: fixed;
+}
+
+.main {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  min-height: 80vh;
+  align-items: center;
+}
+.main .content {
+  margin-top: 5rem;
+  margin-left: 2rem;
+  padding: 20px;
+  width: 40%;
+  display: block;
+}
+.main ::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.main .image {
+  flex: 1 0.5 40rem;
+  z-index: 1;
+}
+
+.main .image img {
+  width: 70%;
+  margin-top: 7rem;
+  margin-left: 6rem;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.main .content h3 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #002057;
+  margin: 0 2.5rem;
+}
+.main .content h6 {
+  color: #000;
+  padding: 1rem 0;
+  margin: 0 2.5rem;
+}
+.main .btn {
+  width: 150px;
+  margin: 0 2.5rem;
+  /* position: absolute; */
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 0;
+  padding: 1rem 2rem;
+  border-radius: 4em;
+  color: #fff;
+  background: #8a2be2;
+  box-shadow: 0px 5px 18px rgba(145, 136, 12, 0.6);
+  font-family: "Nunito", sans-serif;
+}
+
+.cardImage {
+  height: 200px;
+  width: 200px;
+  background-color: white;
+  padding: 40px;
+  border-radius: 50%;
+}
+
+.features {
+  background-color: purple;
+  margin: 3rem;
+  border-radius: 15px;
+  padding: 5rem;
+  color: white;
+}
+
+.feature {
+  margin: 10px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  column-gap: 5px;
+}
+.heading {
+  text-align: center;
+}
+.cards {
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  height: 70%;
+  width: 70%;
+  text-align: center;
+}
+.working-steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 80px;
+  padding: 10px;
+}
+.steps {
+  background-color: purple;
+  padding: 2px;
+  width: 40px;
+  border-radius: 25px;
+  text-align: center;
+  color: white;
+}
+
+.step {
+  display: grid;
+  margin-left: 15px;
+}
+
+.faqs-ques {
+  margin: 13px;
+  padding: 15px;
+}
+
+.footer-items {
+  margin-left: 10px;
+}
+
+.arrow-icon {
+  background-color: white;
+  border-radius: 16px;
+  color: purple;
+  padding: 3px;
+  margin-right: 13px;
+}
+
+.share-icon {
+  padding-right: 30px;
+}
+.header-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.button {
+  margin: 10px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}

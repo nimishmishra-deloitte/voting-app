@@ -21,6 +21,7 @@ import {
   ON_CHANGE_FAIL,
   ON_CHANGE_SUCCESS,
   ON_CHANGE_RESET,
+  CHANGE_YEAR,
 } from "../constant/userConst";
 export const userLoginReducer = (state = {}, action) => {
   switch (action.type) {
@@ -89,9 +90,21 @@ export const SessionInfoReducer = (state = { session: [{}] }, action) => {
   }
 };
 
-const initialId = {
+// const initialState = {
+//   uid: 1,
+// };
+// export const onChangeReducer = (state = initialState, action) => {
+//   if (action.type === CHANGE_YEAR) {
+//     return {
+//       ...state,
+//       uid: action.uid,
+//     };
+//   }
+//   return state;
+// };
+const initialState = {
   uid: 1,
 };
-export const onChangeReducer = (state = initialId, action) => {
+export const onChangeReducer = (state = initialState, action) => {
   return state;
 };

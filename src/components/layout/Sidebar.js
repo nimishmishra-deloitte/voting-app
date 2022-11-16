@@ -32,15 +32,16 @@ import { logout } from "../../actions/userActions";
 import SelectUnstyled from "@mui/base/SelectUnstyled";
 import OptionUnstyled from "@mui/base/OptionUnstyled";
 import { Dropdown, NavDropdown } from "react-bootstrap";
-import { sessionInfo } from "../../actions/userActions";
+import { sessionInfo, onChangeAction } from "../../actions/userActions";
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import { InputLabel, Select } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./sidebar.css";
+import { ConstructionOutlined } from "@mui/icons-material";
 const drawerWidth = 240;
 
-function ResponsiveDrawer(props) {
+export default function ResponsiveDrawer(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const styles = (theme) => ({
     listItemText: {
@@ -52,12 +53,12 @@ function ResponsiveDrawer(props) {
   };
 
   const navigate = useNavigate();
-  const { name, setName } = React.useState(2022);
+
   const drawer = (
     <div>
       <Toolbar />
       <Divider />
-      <List>
+      <List className="sidebarList">
         <Typography variant="h6" sx={{ ml: 2 }}>
           General
         </Typography>
@@ -66,9 +67,16 @@ function ResponsiveDrawer(props) {
             <ListItemIcon>
               <SettingsIcon sx={{ fontSize: "30px" }} />
             </ListItemIcon>
-            <span style={{ fontSize: "18px", marginTop: "5px" }}>
-              General Settings
-            </span>
+            <Link to="/dashboard">
+              <span
+                style={{
+                  fontSize: "18px",
+                  marginTop: "5px",
+                }}
+              >
+                General Settings
+              </span>
+            </Link>
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
@@ -76,9 +84,11 @@ function ResponsiveDrawer(props) {
             <ListItemIcon>
               <PollIcon sx={{ fontSize: "30px" }} />
             </ListItemIcon>
-            <span style={{ fontSize: "18px", marginTop: "5px" }}>
-              Add Election
-            </span>
+            <Link to="/addElection">
+              <span style={{ fontSize: "18px", marginTop: "5px" }}>
+                Add Election
+              </span>
+            </Link>
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
@@ -86,9 +96,11 @@ function ResponsiveDrawer(props) {
             <ListItemIcon>
               <AccessibilityIcon sx={{ fontSize: "30px" }} />
             </ListItemIcon>
-            <span style={{ fontSize: "18px", marginTop: "5px" }}>
-              Assign Role
-            </span>
+            <Link to="/addRole">
+              <span style={{ fontSize: "18px", marginTop: "5px" }}>
+                Assign Role
+              </span>
+            </Link>
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
@@ -96,9 +108,11 @@ function ResponsiveDrawer(props) {
             <ListItemIcon>
               <HttpsIcon sx={{ fontSize: "30px" }} />
             </ListItemIcon>
-            <span style={{ fontSize: "18px", marginTop: "5px" }}>
-              Lock/Unlock
-            </span>
+            <Link to="/activateElection">
+              <span style={{ fontSize: "18px", marginTop: "5px" }}>
+                Lock/Unlock
+              </span>
+            </Link>
           </ListItemButton>
         </ListItem>
       </List>
@@ -140,11 +154,12 @@ function ResponsiveDrawer(props) {
   const { userInfo } = userLogin;
   const sessionsInfo = useSelector((state) => state.sessionsInfo);
   const { session } = sessionsInfo;
-
+  // const onChangesAction = useSelector((state) => state.onChangeInfo);
+  // const { initialState } = onChangesAction;
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const dispatch = useDispatch();
-
+  const { name, setName } = React.useState(1);
   const logoutHandler = () => {
     dispatch(logout());
   };
@@ -152,10 +167,9 @@ function ResponsiveDrawer(props) {
     if (userInfo) {
       dispatch(sessionInfo());
     } else {
-      navigate("/dashboard");
+      navigate("/landingPage");
     }
   }, [dispatch, userInfo]);
-  console.log(props);
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -224,10 +238,10 @@ function ResponsiveDrawer(props) {
             </div>
             <div className="dropDownFooter">
               <select
+                defaultValue="2022"
                 className="custom-select"
                 onChange={(e) => {
                   const selectedYear = e.target.value;
-                  console.log("working");
                   setName(selectedYear);
                 }}
               >
@@ -295,10 +309,3 @@ function ResponsiveDrawer(props) {
     </Box>
   );
 }
-
-const mapStateToProps = (state) => {
-  return {
-    sessionid: state.uid,
-  };
-};
-export default connect(mapStateToProps)(ResponsiveDrawer);

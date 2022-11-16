@@ -31,6 +31,7 @@ import {
   Button,
 } from "@mui/material";
 import { Avatar } from "@mui/material";
+import LandingPage from "../LandingPage/LandingPage";
 export default function Dashboard() {
   const [currentUID, setCurrentUID] = React.useState(1);
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ export default function Dashboard() {
   useEffect(() => {
     if (userInfo) {
       dispatch(electionsInfo(currentUID));
-      dispatch(pollsInfo());
+      dispatch(pollsInfo(currentUID));
       dispatch(sessionInfo());
     } else {
       navigate("/dashboard");
@@ -78,7 +79,7 @@ export default function Dashboard() {
                   <option
                     key={item.uid}
                     value={item.uid}
-                    // defaultValue={item.session_name === "2022"}
+                    selected={item.session_name === "2022"}
                   >
                     {item.session_name}
                   </option>
@@ -174,107 +175,111 @@ export default function Dashboard() {
                             opacity: "80%",
                           }}
                         >
-                          {election.map((elections) => (
-                            <CardContent sx={{ color: "#415063" }}>
-                              <Typography sx={{ fontSize: 14 }} gutterBottom>
-                                Election
-                              </Typography>
-                              <Typography
-                                variant="h5"
-                                component="div"
-                                sx={{ mb: 2, fontWeight: "bold" }}
-                              >
-                                {elections.title}
-                              </Typography>
-                              <Grid container spacing={2}>
-                                <Grid item xs={6} md={6}>
-                                  <Typography
-                                    sx={{ fontSize: 14, fontWeight: "bold" }}
-                                    gutterBottom
-                                  >
-                                    Date
-                                  </Typography>
-                                  <Typography
-                                    sx={{ fontSize: 14 }}
-                                    gutterBottom
-                                  >
-                                    22 Jan 2023
-                                  </Typography>
+                          {election.length > 0 ? (
+                            election.map((elections) => (
+                              <CardContent sx={{ color: "#415063" }}>
+                                <Typography sx={{ fontSize: 14 }} gutterBottom>
+                                  Election
+                                </Typography>
+                                <Typography
+                                  variant="h5"
+                                  component="div"
+                                  sx={{ mb: 2, fontWeight: "bold" }}
+                                >
+                                  {elections.title}
+                                </Typography>
+                                <Grid container spacing={2}>
+                                  <Grid item xs={6} md={6}>
+                                    <Typography
+                                      sx={{ fontSize: 14, fontWeight: "bold" }}
+                                      gutterBottom
+                                    >
+                                      Date
+                                    </Typography>
+                                    <Typography
+                                      sx={{ fontSize: 14 }}
+                                      gutterBottom
+                                    >
+                                      22 Jan 2023
+                                    </Typography>
+                                  </Grid>
+                                  <Grid item xs={6} md={6}>
+                                    <Typography
+                                      sx={{ fontSize: 14, fontWeight: "bold" }}
+                                      gutterBottom
+                                    >
+                                      Duration
+                                    </Typography>
+                                    <Typography
+                                      sx={{ fontSize: 14 }}
+                                      gutterBottom
+                                    >
+                                      24 hrs
+                                    </Typography>
+                                  </Grid>
+                                  <Grid item xs={6} md={6}>
+                                    <Typography
+                                      sx={{ fontSize: 14, fontWeight: "bold" }}
+                                      gutterBottom
+                                    >
+                                      Created By
+                                    </Typography>
+                                    <Typography
+                                      sx={{ fontSize: 14 }}
+                                      gutterBottom
+                                    >
+                                      {elections.created_by_first_name}{" "}
+                                      {elections.created_by_last_name}
+                                    </Typography>
+                                  </Grid>
+                                  <Grid item xs={6} md={6}>
+                                    <Typography
+                                      sx={{ fontSize: 14, fontWeight: "bold" }}
+                                      gutterBottom
+                                    >
+                                      Session
+                                    </Typography>
+                                    <Typography
+                                      sx={{ fontSize: 14 }}
+                                      gutterBottom
+                                    >
+                                      {elections.session}
+                                    </Typography>
+                                  </Grid>
+                                  <Grid item xs={6} md={6}>
+                                    <Typography
+                                      sx={{ fontSize: 14, fontWeight: "bold" }}
+                                      gutterBottom
+                                    >
+                                      Phases
+                                    </Typography>
+                                    <Typography
+                                      sx={{ fontSize: 14 }}
+                                      gutterBottom
+                                    >
+                                      {elections.phases}
+                                    </Typography>
+                                  </Grid>
+                                  <Grid item xs={6} md={6}>
+                                    <Typography
+                                      sx={{ fontSize: 14, fontWeight: "bold" }}
+                                      gutterBottom
+                                    >
+                                      Status
+                                    </Typography>
+                                    <Typography
+                                      sx={{ fontSize: 14 }}
+                                      gutterBottom
+                                    >
+                                      {elections.current_status}
+                                    </Typography>
+                                  </Grid>
                                 </Grid>
-                                <Grid item xs={6} md={6}>
-                                  <Typography
-                                    sx={{ fontSize: 14, fontWeight: "bold" }}
-                                    gutterBottom
-                                  >
-                                    Duration
-                                  </Typography>
-                                  <Typography
-                                    sx={{ fontSize: 14 }}
-                                    gutterBottom
-                                  >
-                                    24 hrs
-                                  </Typography>
-                                </Grid>
-                                <Grid item xs={6} md={6}>
-                                  <Typography
-                                    sx={{ fontSize: 14, fontWeight: "bold" }}
-                                    gutterBottom
-                                  >
-                                    Created By
-                                  </Typography>
-                                  <Typography
-                                    sx={{ fontSize: 14 }}
-                                    gutterBottom
-                                  >
-                                    {elections.created_by_first_name}{" "}
-                                    {elections.created_by_last_name}
-                                  </Typography>
-                                </Grid>
-                                <Grid item xs={6} md={6}>
-                                  <Typography
-                                    sx={{ fontSize: 14, fontWeight: "bold" }}
-                                    gutterBottom
-                                  >
-                                    Session
-                                  </Typography>
-                                  <Typography
-                                    sx={{ fontSize: 14 }}
-                                    gutterBottom
-                                  >
-                                    {elections.session}
-                                  </Typography>
-                                </Grid>
-                                <Grid item xs={6} md={6}>
-                                  <Typography
-                                    sx={{ fontSize: 14, fontWeight: "bold" }}
-                                    gutterBottom
-                                  >
-                                    Phases
-                                  </Typography>
-                                  <Typography
-                                    sx={{ fontSize: 14 }}
-                                    gutterBottom
-                                  >
-                                    {elections.phases}
-                                  </Typography>
-                                </Grid>
-                                <Grid item xs={6} md={6}>
-                                  <Typography
-                                    sx={{ fontSize: 14, fontWeight: "bold" }}
-                                    gutterBottom
-                                  >
-                                    Status
-                                  </Typography>
-                                  <Typography
-                                    sx={{ fontSize: 14 }}
-                                    gutterBottom
-                                  >
-                                    {elections.current_status}
-                                  </Typography>
-                                </Grid>
-                              </Grid>
-                            </CardContent>
-                          ))}
+                              </CardContent>
+                            ))
+                          ) : (
+                            <div className="absentData">No Data Found!!!</div>
+                          )}
                         </Card>
                       </Grid>
                     </Grid>
@@ -333,27 +338,7 @@ export default function Dashboard() {
             </Grid>
           </div>
         ) : (
-          <div class="main-divs">
-            <div className="leftDiv">
-              <h2>Online Voting Platform</h2>
-              <p>
-                Taking forward its continuous efforts of building an active
-                democratic citizenry in the country,Election Commission of India
-                has undertaken a new initiative by designing a Web Application
-                for developing a culture of avid electoral engagement and making
-                informed and ethical ballot decisions among citizens of the
-                country. The app aims to provide a single point of service and
-                information delivery to voters across the country.{" "}
-              </p>
-
-              <Link to="/adminLogin">
-                <button className="login-btn">Admin Login</button>
-              </Link>
-            </div>
-            <div className="bgimage">
-              <img src={votingImage} />
-            </div>
-          </div>
+          <LandingPage />
         )}
       </div>
     </React.Fragment>
