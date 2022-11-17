@@ -1,37 +1,94 @@
-.mainDiv{
-    display: flex;
-    margin-top: -25px; 
-    height:100vh;
+.mainDiv {
+  display: flex;
 }
-.leftDiv{
-    width:50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding:0 20px 0 20px;
-    background-color:rgba(114, 142, 233, 0.4);
+.main-divs {
+  display: flex;
+  height: 100vh;
+  background-color: rgba(114, 142, 233, 0.4);
 }
-.leftDiv h2{
-    color:#1a3693;
-    font-weight: bold;
-    padding:100px 0 50px 0;
+.leftDiv {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5% 5% 5% 5%;
 }
-.leftDiv p{
-    color:rgb(253, 249, 249);
-    font-size:25px;
-    text-align: center;
-    word-spacing: 5px;
+.leftDiv h2 {
+  color: #1a3693;
+  font-weight: bold;
+  padding: 100px 0 50px 0;
 }
-.bgimage{
-    overflow: hidden;
-    width:50%;
+.leftDiv p {
+  color: rgb(253, 249, 249);
+  font-size: 25px;
+  text-align: justify;
+  word-spacing: 5px;
 }
-.login-btn{
-    margin:5px;
-    background-color: rgb(129, 27, 108) !important;
-    border-radius: 50px;
-    border-style: none;
-    padding: 20px 30px 20px 30px;
-    color:white;
-    font-weight: bold;
+.bgimage {
+  margin-top: 150px;
+  overflow: hidden;
+  width: 50%;
+}
+.login-btn {
+  margin: 5px;
+  background-color: rgb(129, 27, 108) !important;
+  border-radius: 50px;
+  border-style: none;
+  padding: 20px 30px 20px 30px;
+  color: white;
+  font-weight: bold;
+}
+.main-divs-login {
+  display: flex;
+  margin-top: 53px;
+  margin-left: 100px;
+}
+
+.heading {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #415063;
+}
+.polls {
+  height: 50%;
+}
+.info {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0;
+  height: 50%;
+}
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.count {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 0;
+}
+.status {
+  font-weight: bold;
+  margin: 0;
+}
+.count-active {
+  color: #1fbf90;
+}
+.count-completed {
+  color: #ffcc00;
+}
+.count-drafted {
+  color: #f44336;
+}
+.announcement-list {
+  line-height: 2rem;
+  color: #334155;
+}
+.absentData {
+  width: 100%;
+  font-size: 100px;
+  text-align: center;
+  color: #f44336;
 }
