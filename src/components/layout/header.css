@@ -1,21 +1,17 @@
-.main-div{
-    display: flex;
-    z-index: 1;
+.main-div {
+  display: flex;
+  z-index: 1;
 }
-.navbar{
-    background-color: #4663BE;
-    opacity: 89%;
-    padding: 25px !important;
+.navbar {
+  background-color: #7851a9;
+  padding: 20px !important;
 }
-.sidebar{
-    width:3%;
-    z-index: 2;
-    position: fixed;
+
+.navbar-brand {
+  font-size: 30px;
+  font-weight: bold;
 }
-.navbar-brand{
-    font-size: 30px;
-    font-weight: bold;
-}
-.nav-link{
-    font-weight: bold !important;
+.nav-link {
+  font-weight: bold !important;
+  color: white;
 }

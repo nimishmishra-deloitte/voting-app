@@ -3,16 +3,6 @@
   padding: 0;
   text-decoration: none;
 }
-.sidebar {
-  margin-top: 53px;
-  background: #000;
-  color: #fff;
-  height: 100vh;
-  transition: all 0.5s;
-  z-index: 2;
-  display: block;
-  margin-left: -12px;
-}
 .top_section {
   display: flex;
   align-items: center;
@@ -74,4 +64,92 @@
 .MuiListItemButton-root a {
   text-decoration: none;
   color: black;
+}
+.dropdown-nav a::after {
+  margin-top: 15px !important;
+}
+
+.css-1v5u2yv {
+  padding-bottom: 0 !important;
+}
+/* .css-1at9qkq .css-11ur11f-MuiDrawer-docked > div {
+  background-color: rgb(120, 81, 169, 0.3) !important;
+} */
+/* .sidebarList {
+  color: #fff !important;
+} */
+.side-buttons:hover {
+  background-color: hsl(266, 76%, 84%) !important;
+}
+.side-links {
+  list-style: none;
+  margin-bottom: 20px;
+  color: black;
+}
+.side-links a {
+  text-decoration: none;
+}
+.sidebar {
+  width: 260px;
+  background-color: #fff;
+  height: 100%;
+}
+.SidebarList {
+  height: auto;
+  width: 100%;
+}
+.SidebarList .row {
+  width: 100% !important;
+  height: 60px;
+  list-style-type: none;
+  margin-left: 0 !important;
+  display: flex;
+  flex-direction: row;
+  color: grey;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 5px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.sidebar .profile-image {
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: #5854b1;
+  padding-bottom: 10px;
+}
+.sidebar .profile-image a img {
+  width: 50%;
+  height: auto;
+  border-radius: 100%;
+  margin-top: 40px;
+  margin-left: 25%;
+}
+.sidebar .profile-image h5,
+h6 {
+  text-align: center;
+  color: #fff;
+}
+.SidebarList .row:hover {
+  cursor: pointer;
+  background-color: #e8ece6;
+}
+.SidebarList #active {
+  background-color: #6f6cbc;
+  color: #fff;
+}
+.sidebar > h6 {
+  color: grey;
+  text-align: left;
+  font-weight: bold;
+  padding: 10px 20px 20px 20px;
+}
+.row #icon {
+  flex: 30%;
+  display: grid;
+  place-items: center;
+}
+.row #title {
+  flex: 70%;
 }

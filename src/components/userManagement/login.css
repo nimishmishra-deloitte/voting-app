@@ -1,48 +1,55 @@
-
-.auth-form-container{
-    position: absolute;
-    top:150px;
-    left:25%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width:50vw;
-    background-image: linear-gradient(79deg, #7439db, #C66FBC 48%, #F7944D);
-  }
-  .login-form{
-    display: flex;
-    flex-direction: column;
-  }
-
-  @media screen and (min-width: 600px) {
-    .auth-form-container {
-      padding: 5rem;
-      border: 1px solid white;
-      border-radius: 10px;
-      margin: 0.5rem;
-    }
-  }
-  
-  label {
-    text-align: left;
-    padding: 0.25rem 0;
-  }
-  
-  input {
-    margin: 0.5rem 0;
-    padding: 1rem;
-    border: none;
+.loginPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 200px;
+}
+.auth-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30vw;
+  background-color: white;
+  box-shadow: 0 0 40px rgba(225, 225, 225, 0.6);
+}
+.auth-form-container h1 {
+  text-align: center;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+.login-form input {
+  border: 1px solid #e3e7e9;
+}
+@media screen and (min-width: 600px) {
+  .auth-form-container {
+    padding: 5rem;
+    border: 1px solid white;
     border-radius: 10px;
+    margin: 0.5rem;
   }
-  
-  button {
-    border: none;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    color: #7439db;
-  }
-  
-  
-  
+}
+
+label {
+  text-align: left;
+  padding: 0.25rem 0;
+}
+
+input {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+}
+
+button {
+  margin-top: 10px;
+  border: none;
+  background-color: #7851a9;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+}

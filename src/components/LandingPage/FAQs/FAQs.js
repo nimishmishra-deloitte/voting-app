@@ -2,7 +2,7 @@ export const faqs = [
   {
     id: 1,
     ques: "What are the main categories of electors in India?",
-    ans: " There are 3 categories of electors in India:<br/> (i) General electors <br/>(ii) Oversees (NRI) electors <br/>(iii) Service Electors",
+    ans: " There are 3 categories of electors in India: (i) General electors (ii) Oversees (NRI) electors (iii) Service Electors",
   },
   {
     id: 2,

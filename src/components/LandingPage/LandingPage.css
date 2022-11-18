@@ -1,3 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --purple: #7851a9;
+  --dark: #2e2834;
+}
 .header {
   height: 5rem;
   justify-content: center;
@@ -9,18 +19,18 @@
   position: relative;
   flex-wrap: wrap;
   gap: 1.5rem;
-  min-height: 80vh;
+  min-height: 90vh;
   align-items: center;
 }
 .main .content {
-  margin-top: 5rem;
+  margin-top: 1rem;
   margin-left: 2rem;
-  padding: 20px;
   width: 40%;
-  display: block;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
 }
 .main ::before {
-  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -29,16 +39,17 @@
 }
 
 .main .image {
-  flex: 1 0.5 40rem;
+  padding-top: 5px;
+  flex: 1 1 40rem;
   z-index: 1;
 }
 
 .main .image img {
-  width: 70%;
-  margin-top: 7rem;
-  margin-left: 6rem;
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  align-self: center;
+  /* margin-left: 6rem; */
+  /* border-radius: 50%; */
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); */
   cursor: pointer;
 }
 
@@ -56,63 +67,94 @@
 .main .btn {
   width: 150px;
   margin: 0 2.5rem;
-  /* position: absolute; */
+
   font-size: 1rem;
   font-weight: 700;
   line-height: 0;
   padding: 1rem 2rem;
   border-radius: 4em;
   color: #fff;
-  background: #8a2be2;
+  background: var(--purple);
   box-shadow: 0px 5px 18px rgba(145, 136, 12, 0.6);
-  font-family: "Nunito", sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+.main .btn:hover {
+  background-color: var(--dark);
+}
+
+.nav-items .nav-btn {
+  color: white;
+  font-size: 20px;
+  margin: 10px;
+}
+.nav-items .nav-btn :hover {
+  color: var(--dark);
+  font-size: 20px;
+}
+.nav-login :hover {
+  background-color: var(--dark);
 }
 
 .cardImage {
-  height: 200px;
-  width: 200px;
+  height: 220px;
+  width: 220px;
   background-color: white;
-  padding: 40px;
-  border-radius: 50%;
+  padding: 10px;
+  /* border-radius: 50%; */
 }
 
 .features {
-  background-color: purple;
-  margin: 3rem;
-  border-radius: 15px;
+  background-color: #837f8a;
+  /* margin: 3rem; */
+  /* border-radius: 15px; */
   padding: 5rem;
   color: white;
 }
 
 .feature {
   margin: 10px;
+  margin-top: 4rem;
   text-align: center;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   align-items: center;
+  justify-content: space-around;
   column-gap: 5px;
 }
-.heading {
+.main-heading {
   text-align: center;
 }
 .cards {
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   padding: 5px;
   height: 70%;
   width: 70%;
   text-align: center;
 }
+
+.working {
+  padding: 5rem;
+}
+/* .working .MuiBox-root {
+  display: flex;
+  justify-content: space-between;
+} */
+/* .working .works {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+} */
+
 .working-steps {
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
   align-items: center;
-  text-align: center;
   margin: 80px;
-  padding: 10px;
+  /* padding: 5px; */
 }
 .steps {
-  background-color: purple;
+  align-items: center;
+  background-color: var(--purple);
   padding: 2px;
   width: 40px;
   border-radius: 25px;
@@ -121,7 +163,9 @@
 }
 
 .step {
-  display: grid;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   margin-left: 15px;
 }
 
@@ -130,14 +174,27 @@
   padding: 15px;
 }
 
+.footer {
+  background-color: var(--dark);
+  color: white;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 30px;
+}
+
 .footer-items {
   margin-left: 10px;
+  margin-right: 50px;
+  padding: 10px 50px;
 }
 
 .arrow-icon {
   background-color: white;
   border-radius: 16px;
-  color: purple;
+  color: var(--dark);
   padding: 3px;
   margin-right: 13px;
 }
@@ -145,15 +202,31 @@
 .share-icon {
   padding-right: 30px;
 }
-.header-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.quick-link {
+  margin: -10px !important;
 }
-.button {
-  margin: 10px;
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
+
+@media screen and (max-width: 768px) {
+  .main {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .main .content {
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  .feature {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .working {
+    justify-content: center;
+    align-items: center;
+  }
+  .faqs {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

@@ -1,37 +1,45 @@
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import React, { useState } from "react";
+
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Box from "@mui/material/Box";
 
-import randomcolor from "randomcolor";
 function FaqsAccordian({ ques, ans }) {
   const [show, setShow] = useState(false);
   return (
     <>
       <Box
-        className="ques"
         sx={{
+          display: "flex",
           boxShadow: 5,
           mr: 3,
-          p: 1,
-          pl: 1,
+          pt: 2,
+          pb: 2,
+          pr: 3,
+          pl: 3,
           mb: 3,
-          backgroundColor: randomcolor(),
+          backgroundColor: "white",
           opacity: 0.8,
           color: "black",
-          borderRadius: 15,
+          borderRadius: 5,
         }}
       >
-        <Typography variant="h6" onClick={() => setShow(!show)} sx={{ pl: 1 }}>
-          {show ? <RemoveIcon /> : <AddIcon />}
-          {ques}
-        </Typography>
-        {show && (
-          <Typography variant="p" sx={{ m: 2 }}>
-            {ans}
+        <Box>
+          <Button onClick={() => setShow(!show)} sx={{ color: "#7851a9" }}>
+            {show ? <RemoveIcon /> : <AddIcon />}
+          </Button>
+        </Box>
+        <Box className="ques">
+          <Typography
+            variant="h6"
+            style={{ color: "#000", textAlign: "left" }}
+            sx={{ pl: 1 }}
+          >
+            {ques}
           </Typography>
-        )}
+          {show && <Typography variant="p">{ans}</Typography>}
+        </Box>
       </Box>
     </>
   );

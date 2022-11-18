@@ -27,11 +27,13 @@ import { Button } from "@mui/material";
 import { connect, useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import PersonIcon from "@mui/icons-material/Person";
 import { logout } from "../../actions/userActions";
 import SelectUnstyled from "@mui/base/SelectUnstyled";
 import OptionUnstyled from "@mui/base/OptionUnstyled";
 import { Dropdown, NavDropdown } from "react-bootstrap";
+import profileImage from "../../assets/female.png";
 import { sessionInfo, onChangeAction } from "../../actions/userActions";
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
@@ -39,117 +41,45 @@ import { InputLabel, Select } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./sidebar.css";
 import { ConstructionOutlined } from "@mui/icons-material";
-const drawerWidth = 240;
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+const drawerWidth = 280;
 
 export default function ResponsiveDrawer(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const styles = (theme) => ({
     listItemText: {
-      fontSize: "1em", //Insert your required size
+      fontSize: "5em", //Insert your required size
     },
   });
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  const classes = styles();
   const navigate = useNavigate();
-
-  const drawer = (
-    <div>
-      <Toolbar />
-      <Divider />
-      <List className="sidebarList">
-        <Typography variant="h6" sx={{ ml: 2 }}>
-          General
-        </Typography>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <SettingsIcon sx={{ fontSize: "30px" }} />
-            </ListItemIcon>
-            <Link to="/dashboard">
-              <span
-                style={{
-                  fontSize: "18px",
-                  marginTop: "5px",
-                }}
-              >
-                General Settings
-              </span>
-            </Link>
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <PollIcon sx={{ fontSize: "30px" }} />
-            </ListItemIcon>
-            <Link to="/addElection">
-              <span style={{ fontSize: "18px", marginTop: "5px" }}>
-                Add Election
-              </span>
-            </Link>
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <AccessibilityIcon sx={{ fontSize: "30px" }} />
-            </ListItemIcon>
-            <Link to="/addRole">
-              <span style={{ fontSize: "18px", marginTop: "5px" }}>
-                Assign Role
-              </span>
-            </Link>
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <HttpsIcon sx={{ fontSize: "30px" }} />
-            </ListItemIcon>
-            <Link to="/activateElection">
-              <span style={{ fontSize: "18px", marginTop: "5px" }}>
-                Lock/Unlock
-              </span>
-            </Link>
-          </ListItemButton>
-        </ListItem>
-      </List>
-      <Divider />
-      <List>
-        <Typography variant="h6" sx={{ ml: 2 }}>
-          Management
-        </Typography>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <VpnKeyIcon sx={{ fontSize: "30px" }} />
-            </ListItemIcon>
-            <ListItemText>
-              <span style={{ fontSize: "18px", marginTop: "5px" }}>
-                Reset Password
-              </span>
-            </ListItemText>
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <BadgeIcon sx={{ fontSize: "30px" }} />
-            </ListItemIcon>
-            <ListItemText>
-              <span style={{ fontSize: "18px", marginTop: "30px" }}>
-                Update User
-              </span>
-            </ListItemText>
-          </ListItemButton>
-        </ListItem>
-      </List>
-    </div>
-  );
-
-  //const container = window !== undefined ? () => window().document.body : undefined;
+  const location = useLocation();
+  const menuItems = [
+    {
+      text: "Dashboard",
+      icon: <SettingsIcon />,
+      path: "/dashboard",
+    },
+    {
+      text: "Add Election",
+      icon: <PollIcon />,
+      path: "/addElection",
+    },
+    {
+      text: "Assign Role",
+      icon: <AccessibilityIcon />,
+      path: "/assignRole",
+    },
+    {
+      text: "Lock/Unlock",
+      icon: <HttpsIcon />,
+      path: "/unlock",
+    },
+  ];
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const sessionsInfo = useSelector((state) => state.sessionsInfo);
@@ -170,14 +100,77 @@ export default function ResponsiveDrawer(props) {
       navigate("/landingPage");
     }
   }, [dispatch, userInfo]);
+  const drawer = (
+    <div className="sidebar">
+      <Typography
+        variant="h5"
+        noWrap
+        component="div"
+        sx={{
+          fontWeight: "bold",
+          color: "#6f6cbc",
+          textAlign: "center",
+          padding: "20px",
+        }}
+      >
+        E-Voting System
+      </Typography>
+      {/* <div class="profile-image">
+        <a target="_blank" href="#">
+          <img src={profileImage} class="hoverZoomLink" />
+        </a>
+        <h5>
+          {userInfo.user.first_name.toUpperCase()}{" "}
+          {userInfo.user.last_name.toUpperCase()}
+        </h5>
+        <h6 sx={{ padding: "10px" }}>ADMIN</h6>
+      </div> */}
+      {/* <List>
+        <Typography sx={{ m: 2, fontWeight: "bold" }}>GENERAL</Typography>
+        {menuItems.map((item) => (
+          <ListItem
+            button
+            key={item.text}
+            onClick={() => navigate(item.path)}
+            sx={{
+              "&:selected": { backgroundColor: "grey" },
+              "&:active": { backgroundColor: "grey" },
+            }}
+          >
+            <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItemText primary={item.text} />
+          </ListItem>
+        ))}
+      </List> */}
+      <h6>GENERAL</h6>
+      <ul className="SidebarList">
+        {menuItems.map((item) => (
+          <li
+            className="row"
+            key={item.text}
+            id={window.location.pathname == item.path ? "active" : ""}
+            onClick={() => {
+              window.location.pathname = item.path;
+            }}
+          >
+            {" "}
+            <div id="icon">{item.icon}</div> <div id="title">{item.text}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+
+  //const container = window !== undefined ? () => window().document.body : undefined;
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar
         position="fixed"
+        className="test"
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
+          width: { md: `calc(100% - ${drawerWidth}px)` },
+          ml: { md: `${drawerWidth}px` },
           bgcolor: "#fff",
           boxShadow: "none",
           borderBottom: "1px solid #D9D9D9",
@@ -189,18 +182,11 @@ export default function ResponsiveDrawer(props) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ mr: 2, display: { md: "none " }, color: "#000" }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, fontWeight: "bold", color: "#000" }}
-          >
-            VotingMadeEasy
-          </Typography>
+
           {/* <Button 
           color="inherit" 
           sx={{fontWeight:'bold',color:'#000'}} 
@@ -214,11 +200,42 @@ export default function ResponsiveDrawer(props) {
           >
           Logout
           </Button>  */}
+          {/* <Select
+            defaultValue={"1"}
+            className="custom-select"
+            onChange={(e) => {
+              const selectedYear = e.target.value;
+              setName(selectedYear);
+            }}
+          >
+            {session.map((item) => (
+              <option key={item.Uid} value={item.Uid}>
+                {item.session_name}
+              </option>
+            ))}
+          </Select> */}
+          <Typography
+            variant="h4"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1, fontWeight: "bold", color: "#000" }}
+          ></Typography>
           <NavDropdown
             className="dropdown-nav"
             title={
-              <span style={{ color: "black" }}>
-                {userInfo.user.first_name} {userInfo.user.last_name}
+              <span style={{ color: "#000" }}>
+                <PersonIcon
+                  sx={{
+                    m: 2,
+                    border: "1px solid #fff",
+                    backgroundColor: "#5458b1",
+                    borderRadius: "50%",
+                    color: "#fff",
+                    fontSize: "30px",
+                  }}
+                />
+                {userInfo.user.first_name.toUpperCase()}{" "}
+                {userInfo.user.last_name.toUpperCase()}
               </span>
             }
             id="username"
@@ -237,7 +254,7 @@ export default function ResponsiveDrawer(props) {
               </div>
             </div>
             <div className="dropDownFooter">
-              <select
+              {/* <select
                 defaultValue="2022"
                 className="custom-select"
                 onChange={(e) => {
@@ -250,7 +267,7 @@ export default function ResponsiveDrawer(props) {
                     {item.session_name}
                   </option>
                 ))}
-              </select>
+              </select> */}
 
               <Button sx={{ fontWeight: "bold" }} onClick={logoutHandler}>
                 Logout
@@ -261,11 +278,15 @@ export default function ResponsiveDrawer(props) {
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{
+          width: { md: drawerWidth },
+          flexShrink: { md: 0 },
+        }}
         aria-label="mailbox folders"
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
+          className="sidenav"
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
@@ -273,7 +294,7 @@ export default function ResponsiveDrawer(props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: "block", sm: "none" },
+            display: { sm: "block", md: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
@@ -285,7 +306,7 @@ export default function ResponsiveDrawer(props) {
         <Drawer
           variant="permanent"
           sx={{
-            display: { xs: "none", sm: "block" },
+            display: { sm: "none", md: "block" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
